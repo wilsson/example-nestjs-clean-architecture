@@ -1,13 +1,10 @@
 import { Connection } from 'mongoose';
 import { UserSchema } from './user.entity';
-import { Injectable, Inject } from '@nestjs/common';
 import { IUserRepository } from '../../../core/repository/user.repository';
 
-@Injectable()
 class UserRepository implements IUserRepository {
   constructor(
-    @Inject('USER_MODEL')
-    private readonly userModel
+    private userModel
   ) { }
 
   async createUser(user: any) {
@@ -26,13 +23,11 @@ class UserRepository implements IUserRepository {
 
 export const userProviders = [
   {
-    provide: 'USER_MODEL',
-    useFactory: (connection: Connection) => connection.model('User', UserSchema),
-    inject: ['DATABASE_CONNECTION'],
-  },
-  {
     provide: 'USER_REPOSITORY',
-    useExisting: UserRepository,
-  },
-  UserRepository
-]
+    useFactory: (connection: Connection) => {
+      const repository = connection.model('User', UserSchema);
+      return new UserRepository(repository);
+    },
+    inject: ['DATABASE_CONNECTION'],
+  }
+];

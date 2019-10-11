@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { userProviders } from './repository/mysql/user.repository';
-import { databaseProviders } from './repository/mysql/connection.provider';
+import { userProviders } from './repository/mongo/user.repository';
+import { databaseProviders } from './repository/mongo/connection.provider';
 
 @Module({
   providers: [
