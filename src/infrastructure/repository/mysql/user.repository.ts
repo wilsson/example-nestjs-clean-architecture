@@ -1,25 +1,35 @@
 
-import { Connection, Repository, EntityRepository } from 'typeorm';
+import { Connection, EntityManager, EntityRepository } from 'typeorm';
 import { User } from './user.entity';
 import { IUserRepository } from '../../../core/repository/user.repository';
 
-@EntityRepository(User)
-class UserRepository extends Repository<User> implements IUserRepository {
+@EntityRepository()
+class UserRepository implements IUserRepository {
 
-  async createUser(user) {
-    return await this.insert(user);
+  constructor(private manager: EntityManager) { }
+
+  async create(user: User) {
+    const newUser = new User();
+    newUser.id = user.id;
+    newUser.name = user.name;
+
+    return await this.manager.save(newUser);
   }
 
-  async getAllUsers() {
-    return await this.find();
+  async getAll() {
+    return await this.manager.find(User);
   }
 
-  async getByIdUser(id) {
-    return await this.findOne(id)
+  async getById(id: string) {
+    return await this.manager.findOne(User, { id })
   }
 
-  updateUser(id, user) {
-    this.update(id, user);
+  update(id: string, user: User) {
+    const newUser = new User();
+    newUser.id = user.id;
+    newUser.name = user.name;
+
+    this.manager.update(id, newUser, User);
   }
 };
 

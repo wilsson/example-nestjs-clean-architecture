@@ -1,6 +1,6 @@
 export interface IUserRepository {
-  createUser(user: any): any;
-  getAllUsers(): any;
-  getByIdUser(id: string): any;
-  updateUser(id: string, user: any): any;
+  create(user: any): any;
+  getAll(): any;
+  getById(id: string): any;
+  update(id: string, user: any): any;
 };

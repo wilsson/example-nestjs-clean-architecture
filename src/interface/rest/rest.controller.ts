@@ -38,6 +38,7 @@ export class RestController {
 
   @Get(':id')
   async getById(@Param() params) {
+    console.log('params.id>>>', params.id);
     const data = await this.service.getById(params.id);
     return {
       code: HttpStatus.OK,

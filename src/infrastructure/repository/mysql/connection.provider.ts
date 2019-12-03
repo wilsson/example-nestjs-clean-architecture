@@ -10,10 +10,11 @@ export const databaseProviders = [
       username: 'root',
       password: 'secret',
       database: 'app',
+      logging: ["query", "error"],
       entities: [
         __dirname + '/**/*.entity{.ts,.js}',
       ],
-      synchronize: true,
-    }),
-  },
+      synchronize: true
+    })
+  }
 ];

@@ -12,11 +12,11 @@ export class UserService {
   ) { }
 
   async getAll() {
-    return await this.repository.getAllUsers();
+    return await this.repository.getAll();
   }
 
   getById(id: string) {
-    return this.repository.getByIdUser(id);
+    return this.repository.getById(id);
   }
 
   async create(user: any) {
@@ -25,10 +25,10 @@ export class UserService {
     if (errors.length > 0) {
       throw JSON.stringify(errors);
     }
-    return await this.repository.createUser(object);
+    return await this.repository.create(object);
   }
 
   update(id: string, user: any) {
-    return this.repository.updateUser(id, user);
+    return this.repository.update(id, user);
   }
 }
