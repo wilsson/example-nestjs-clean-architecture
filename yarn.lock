@@ -4456,8 +4456,8 @@ tiny-lru@^7.0.0:
   resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-7.0.1.tgz#a5401035c317ea36ba86f91ce68b1b87e86c7630"
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
 
 to-fast-properties@^1.0.3:
   version "1.0.3"
